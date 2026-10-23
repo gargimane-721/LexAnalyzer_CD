@@ -1,0 +1,120 @@
+[
+  {
+    "id": "sample_01",
+    "name": "01. Basic Integer Declaration",
+    "category": "Valid Examples",
+    "expected_validity": "VALID",
+    "expected_category": "Successful Compilation",
+    "description": "Demonstrates valid integer variable declaration and literal initialization with semicolon.",
+    "source_code": "// Sample 1: Basic integer declaration\nint counter = 10;\nprint(counter);"
+  },
+  {
+    "id": "sample_02",
+    "name": "02. Floating-Point Numbers",
+    "category": "Valid Examples",
+    "expected_validity": "VALID",
+    "expected_category": "Successful Compilation",
+    "description": "Demonstrates valid float declarations, decimal literal tokenization, and output.",
+    "source_code": "// Sample 2: Float numbers\nfloat pi = 3.1415;\nfloat radius = 2.5;\nfloat area = pi * radius * radius;\nprint(area);"
+  },
+  {
+    "id": "sample_03",
+    "name": "03. Operator Precedence (* before +)",
+    "category": "Valid Examples",
+    "expected_validity": "VALID",
+    "expected_category": "Successful Compilation",
+    "description": "Verifies that multiplication and division take precedence over addition and subtraction.",
+    "source_code": "// Sample 3: Precedence verification\nint a = 10;\nint b = 5;\nint result = a + b * 2;\nprint(result);"
+  },
+  {
+    "id": "sample_04",
+    "name": "04. Grouped Parentheses Expressions",
+    "category": "Valid Examples",
+    "expected_validity": "VALID",
+    "expected_category": "Successful Compilation",
+    "description": "Tests expression evaluation where parentheses override standard operator precedence.",
+    "source_code": "// Sample 4: Parenthesized expression\nint a = 10;\nint b = 5;\nint overrideResult = (a + b) * 2;\nprint(overrideResult);"
+  },
+  {
+    "id": "sample_05",
+    "name": "05. Multi-Statement Computation",
+    "category": "Valid Examples",
+    "expected_validity": "VALID",
+    "expected_category": "Successful Compilation",
+    "description": "Demonstrates sequential variable declarations, re-assignments, and print statements.",
+    "source_code": "// Sample 5: Multi-step calculation\nint base = 100;\nint step = 25;\nbase = base + step;\nint total = base * 2;\nprint(total);"
+  },
+  {
+    "id": "sample_06",
+    "name": "06. Syntax Error: Missing Semicolon",
+    "category": "Syntax Errors",
+    "expected_validity": "INVALID",
+    "expected_category": "Syntax Error",
+    "description": "Demonstrates detection of missing semicolon at end of declaration and reporting exact line/col.",
+    "source_code": "// Sample 6: Missing semicolon on line 2\nint a = 10\nint b = 20;\nprint(b);"
+  },
+  {
+    "id": "sample_07",
+    "name": "07. Syntax Error: Unmatched Parenthesis",
+    "category": "Syntax Errors",
+    "expected_validity": "INVALID",
+    "expected_category": "Syntax Error",
+    "description": "Demonstrates parser detection of unmatched opening parenthesis '(' without closing ')'.",
+    "source_code": "// Sample 7: Missing closing parenthesis\nint a = 10;\nint result = (a + 5 * 2;\nprint(result);"
+  },
+  {
+    "id": "sample_08",
+    "name": "08. Lexical Error: Illegal Characters",
+    "category": "Lexical Errors",
+    "expected_validity": "INVALID",
+    "expected_category": "Lexical Error",
+    "description": "Demonstrates scanner detection of unsupported characters like '@' and '$'.",
+    "source_code": "// Sample 8: Illegal symbols @ and $\nint score = 100 @ 2;\nfloat cost = $50.0;"
+  },
+  {
+    "id": "sample_09",
+    "name": "09. Lexical Error: Malformed Number",
+    "category": "Lexical Errors",
+    "expected_validity": "INVALID",
+    "expected_category": "Lexical Error",
+    "description": "Detects invalid floating-point literal with multiple decimal points.",
+    "source_code": "// Sample 9: Malformed float literal 12.34.56\nfloat val = 12.34.56;\nprint(val);"
+  },
+  {
+    "id": "sample_10",
+    "name": "10. Semantic Error: Undeclared Variable",
+    "category": "Semantic Errors",
+    "expected_validity": "INVALID",
+    "expected_category": "Semantic Error",
+    "description": "Detects assignment and expression reading of an undeclared identifier 'speed'.",
+    "source_code": "// Sample 10: Undeclared variable usage\nspeed = 60;\nint time = 2;\nint distance = speed * time;\nprint(distance);"
+  },
+  {
+    "id": "sample_11",
+    "name": "11. Semantic Error: Duplicate Declaration",
+    "category": "Semantic Errors",
+    "expected_validity": "INVALID",
+    "expected_category": "Semantic Error",
+    "description": "Detects re-declaration of an identifier already present in the current symbol table.",
+    "source_code": "// Sample 11: Re-declaration of 'x'\nint x = 10;\nint y = 20;\nint x = 30;\nprint(x);"
+  },
+  {
+    "id": "sample_12",
+    "name": "12. Semantic Error: Static Division by Zero",
+    "category": "Semantic Errors",
+    "expected_validity": "INVALID",
+    "expected_category": "Semantic Error",
+    "description": "Detects compile-time static division by literal zero.",
+    "source_code": "// Sample 12: Static division by zero\nint a = 50;\nint b = a / 0;\nprint(b);"
+  },
+  {
+    "id": "sample_13",
+    "name": "13. Full Pipeline Showcase Program",
+    "category": "Valid Examples",
+    "expected_validity": "VALID",
+    "expected_category": "Successful Compilation",
+    "description": "Comprehensive demonstration of declarations, arithmetic precedence, grouping, TAC, and output.",
+    "source_code": "// Sample 13: Complete compiler showcase\nint x = 10;\nint y = 20;\nfloat factor = 1.5;\nint sum = (x + y) * 2;\nprint(sum);"
+  }
+]
+
