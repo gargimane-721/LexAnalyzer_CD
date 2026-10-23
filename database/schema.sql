@@ -7,6 +7,7 @@ CREATE TABLE IF NOT EXISTS programs (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     name TEXT NOT NULL,
     source_code TEXT NOT NULL,
+    language TEXT NOT NULL DEFAULT 'c',
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
@@ -16,6 +17,7 @@ CREATE TABLE IF NOT EXISTS compilations (
     program_id INTEGER NULL,
     program_name_snapshot TEXT,
     source_code_snapshot TEXT NOT NULL,
+    language TEXT NOT NULL DEFAULT 'c',
     status TEXT NOT NULL,
     token_count INTEGER NOT NULL DEFAULT 0,
     error_count INTEGER NOT NULL DEFAULT 0,
@@ -59,4 +61,3 @@ CREATE INDEX IF NOT EXISTS idx_compilations_program_id ON compilations(program_i
 CREATE INDEX IF NOT EXISTS idx_compilations_started_at ON compilations(started_at DESC);
 CREATE INDEX IF NOT EXISTS idx_tokens_compilation_id ON tokens(compilation_id);
 CREATE INDEX IF NOT EXISTS idx_errors_compilation_id ON errors(compilation_id);
-

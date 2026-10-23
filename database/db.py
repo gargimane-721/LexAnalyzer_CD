@@ -40,7 +40,7 @@ class DatabaseManager:
             conn.close()
 
     def init_db(self) -> None:
-        """Initializes tables and indexes from schema.sql if not already present."""
+        """Initializes tables and indexes from schema.sql and runs migrations."""
         if os.path.exists(SCHEMA_PATH):
             with open(SCHEMA_PATH, "r", encoding="utf-8") as f:
                 schema_sql = f.read()
@@ -49,10 +49,28 @@ class DatabaseManager:
             try:
                 conn.executescript(schema_sql)
                 conn.commit()
+
+                # Migration: Ensure 'language' column exists in programs and compilations
+                cursor = conn.cursor()
+                cursor.execute("PRAGMA table_info(programs);")
+                columns_programs = [row[1] for row in cursor.fetchall()]
+                if "language" not in columns_programs and "programs" in [
+                    r[0] for r in conn.execute("SELECT name FROM sqlite_master WHERE type='table'").fetchall()
+                ]:
+                    conn.execute("ALTER TABLE programs ADD COLUMN language TEXT NOT NULL DEFAULT 'c';")
+                    conn.commit()
+
+                cursor.execute("PRAGMA table_info(compilations);")
+                columns_compilations = [row[1] for row in cursor.fetchall()]
+                if "language" not in columns_compilations and "compilations" in [
+                    r[0] for r in conn.execute("SELECT name FROM sqlite_master WHERE type='table'").fetchall()
+                ]:
+                    conn.execute("ALTER TABLE compilations ADD COLUMN language TEXT NOT NULL DEFAULT 'c';")
+                    conn.commit()
+
             finally:
                 conn.close()
 
 
 # Global default instance
 db_manager = DatabaseManager()
-
